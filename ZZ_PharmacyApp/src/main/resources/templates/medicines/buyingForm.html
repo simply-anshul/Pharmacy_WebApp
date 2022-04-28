@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+<title>Employee Directory</title>
+</head>
+<body style="background-color: rgba(203, 203, 238, 0.4);">
+<!-- THE NAVIGATION BAR-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/"><img alt="XYZ" src="images/logo.png" style="width:50px;height:40px">
+</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/medicine-list">Medicines</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<!-- THE NAVIGATION BAR-->
+
+
+
+
+
+
+	<div class="container" style="margin: 100px">
+		<form th:action="@{/save}" th:object="${medicines}"	method="post">
+			<div class="form-group">
+				<input type="hidden" th:field="*{id}">
+				<label>Medicine Name</label> <br>
+				<input  type="text"  th:field="*{name}" readonly> 
+				<br> 
+				<label>Enter Description</label><br>
+				<input type="text" th:field="*{descripton}" readonly> 
+				<br>
+				<label>Price</label><br>
+				<input type="number" min=1 step=0.01 th:field="*{price}" placeholder="Price" readonly>
+				<br>
+				<label>Quantity Available</label><br>
+				 <input type="number" min=1	th:field="*{available}" placeholder="Available Quantity" readonly> 
+				 <br>
+		</form>
+		
+		
+			<form th:action="@{/BuyMedicine(medId=*{id})}"
+					 th:object="${medicines}" 
+					 method="post">
+					<input type="text" name="keyword" th:max="*{available}">
+				<button type="submit">Go</button>
+			</form>
+
+
+		
+		
+		
+		
+		<hr>
+		<a th:href="@{/medicine-list}" class="btn btn-info">
+		Back to List</a>
+		
+	</div>
+
+
+
+
+
+</body>
+
+</html>

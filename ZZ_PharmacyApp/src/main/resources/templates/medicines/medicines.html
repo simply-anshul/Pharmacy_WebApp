@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<title>Employee Directory</title>
+</head>
+<body style="background-color:rgba(203, 203, 238, 0.4);">
+<!-- THE NAVIGATION BAR-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/"><img alt="XYZ" src="images/logo.png" style="width:50px;height:40px">
+</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/medicine-list">Medicines</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!-- THE NAVIGATION BAR-->
+
+
+
+
+
+
+<div class="container">
+
+	<h3>FEEL FREE TO VIEW OUR MEDICINE COLLECTION!</h3>
+	<hr>
+	
+	
+	
+	
+	<div class="container">
+		<div class="row"> 
+			<div class="col-8">
+				<form th:action="@{/medicine-list}" method="get">
+				<input id="textSearch" type="text" name="keyword">
+				<button type="submit">Go</button>
+				</form>
+			</div>
+			<div class="col-4">
+					<a href="/medicine-list" class="btn btn-info">SHOW ALL</a>
+						<a th:href=@{AdditionForm}>
+						<button type="button" class="btn btn-primary" style = "margin: top: 40px; border: 1px solid black; border-radius: 30px; background-color: pink; color: black">
+						Add Medicine</button>
+						</a>
+					
+			</div>
+		</div>
+	</div>
+	<table class="table table-bordered table-striped" style="margin-top:20px; margin-bottom:10px">
+		<thead class="thead-dark">
+			<tr>
+				<th>
+					<img alt="XYZ" src="images/medicine.png" style="width:50px;height:40px">
+					Name
+				</th>
+				<th>
+					<img alt="XYZ" src="images/description.jpeg" style="width:50px;height:40px">
+					Description
+				</th>
+				<th>
+					<img alt="XYZ" src="images/rupee.png" style="width:50px;height:40px">
+					Price
+				</th>
+				<th>
+					<img alt="XYZ" src="images/stock-icon.png" style="width:50px;height:40px">
+					Available
+				</th>
+				<th>
+					<img alt="XYZ" src="images/action.png" style="width:50px;height:40px">
+					Action
+				</th>
+				<th>
+					<img alt="XYZ" src="images/buy.png" style="width:50px;height:40px">
+					Buy
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="temp : ${medicines}">
+				<td th:text="${temp.name}">
+				<td th:text="${temp.descripton}"/>
+				<td th:text="${temp.price}" />
+				<td th:text="${temp.available}"/>
+				<td>
+					<a th:href="@{/UpdateForm(medId=${temp.id})}" class="btn btn-info">
+					UPDATE
+					</a>
+					<a th:href="@{/Delete(medId=${temp.id})}" class="btn btn-danger" 
+					onclick="if(!(confirm('This action will delete the medicine'))) return false">
+					DELETE
+					</a>
+				</td>
+				<td>
+					<a th:href="@{/BuyMedicine(medId=${temp.id})}" class="btn btn-dark">
+					BUY
+					</a>
+								
+				</td>
+						
+				
+				
+			</tr>
+		</tbody>		
+	</table>
+	
+	
+	
+
+</div>
+
+
+
+</body>
+
+</html>
