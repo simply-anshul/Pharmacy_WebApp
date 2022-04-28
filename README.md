@@ -20,12 +20,19 @@ You can clone my project.
 <br/>
 To Run the project, simple run PharmacyApplication.java as a Java Application. Springboot will handle the rest. It will start the server at port: 8081
 <br/>
-Go to <http://localhost:8081/> and you will encounter an Home page
+Go to http://localhost:8081/ and you will encounter an Home page
 <br/>
-<http://localhost:8081/medicine-list> gives you the interactive lists of medicines to go through. Feel free to play with it!
+http://localhost:8081/medicine-list gives you the interactive lists of medicines to go through. Feel free to play with it!
 
 
 <br/>
+ <br/>
+ 
+ Checkout the image : sample.   to see what this looks like
+ <br/>
+ <br/>
+ 
+ 
  
 
 
